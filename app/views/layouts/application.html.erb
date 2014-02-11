@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= yield(:title) or 'LamBlog' %></title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	
+	<main>
+		<div class="uk-width-medium-1-2 uk-container-center">
+
+<%= yield %>
+
+		</div>
+	</main>
+
+</body>
+</html>

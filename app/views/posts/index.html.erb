@@ -1,0 +1,24 @@
+<% content_for :title do %>LAM Test Blog<% end %>
+
+<h1>LAM Test Blog</h1>
+
+<div class="uk-grid">
+  <%= link_to 'Create New Post', new_post_path, html_options = {:class => 'uk-button uk-width-1-1'} %>
+</div>
+
+<% @posts.each do |post| %>
+<div class="uk-grid">
+  <div class="uk-panel uk-panel-box">
+    <h3 class="uk-panel-title"><%= link_to post.title, post %></h3>
+    <p><%= post.short %></p>
+    <p>// <%= post.author %> at <%= post.created_at.strftime('%e %b %Y %H:%M') %></p>
+    <div class="uk-panel-badge uk-badge"><%= post.status %></div>
+
+    <ul class="uk-subnav uk-subnav-line">
+      <li><%= link_to 'Show', post %></li>
+      <li><%= link_to 'Edit', edit_post_path(post) %></li>
+      <li><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+    </ul>
+  </div>
+</div>
+<% end %>

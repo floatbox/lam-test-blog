@@ -1,0 +1,39 @@
+<div class="uk-panel uk-panel-box">
+<%= form_for @post, :html => { :class => "uk-form uk-form-horizontal"} do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation" class="uk-alert uk-alert-danger">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="uk-form-row">
+    <%= f.label :title, :class=>'uk-form-label' %>
+    <%= f.text_field :title, :class=>'uk-form-width-large' %>
+  </div>
+  <div class="uk-form-row">
+    <%= f.label :short, :class=>'uk-form-label' %>
+    <%= f.text_area :short, :rows => "5", :class=>'uk-form-width-large' %>
+  </div>
+  <div class="uk-form-row">
+     <%= f.label :body, :class=>'uk-form-label' %>
+     <%= f.text_area :body, :rows => "20", :class=>'uk-form-width-large' %>
+   </div>
+  <div class="uk-form-row">
+    <%= f.label :author, :class=>'uk-form-label' %>
+    <%= f.text_field :author %>
+  </div>
+  <div class="uk-form-row">
+    <%= f.label :status, :class=>'uk-form-label' %>
+    <%= f.select :status, Post.statuses %>
+  </div>
+  <div class="uk-form-row">
+    <%= f.submit :class => 'uk-button uk-button-primary' %>
+  </div>
+<% end %>
+</div>

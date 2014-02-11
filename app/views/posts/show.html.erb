@@ -1,0 +1,31 @@
+<% content_for :title do %><%= @post.title %> - LAM Test Blog<% end %>
+
+<h1>LAM Test Blog</h1>
+
+<ul class="uk-subnav uk-subnav-line">
+  <li><%= link_to 'All posts', posts_path %></li>
+</ul>
+
+<% if notice %><p id="notice" class="uk-alert uk-alert-success"><%= notice %></p><% end %>
+
+<div class="uk-panel uk-panel-box">
+  <article class="uk-article">
+
+<h2 class="uk-article-title"><%= link_to_unless_current @post.title, @post %></h2>
+<p class="uk-article-meta">Written by <%= @post.author %> on <%= @post.created_at.strftime('%e %b %Y %H:%M') %>.</p>
+<hr class="uk-article-divider">
+<%if @post.short %>
+<p class="uk-article-lead">
+  <%= @post.short %>
+</p>
+<% end %>
+<p>
+  <%= @post.safe_body %>
+</p>
+<hr class="uk-article-divider">
+
+  </article>
+  <ul class="uk-subnav uk-subnav-line">
+    <li><%= link_to 'Edit', edit_post_path(@post) %></li>
+  </ul>
+</div>
